@@ -9,6 +9,7 @@ const MovieImage = ({ src, fallbackSrc, ...props }) => {
     setSrc(src);
   }, [src]);
 
+  // * Set src to fallback if load failed
   const onError = () => {
     if (!errored) {
       setSrc(fallbackSrc)

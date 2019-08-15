@@ -27,6 +27,7 @@ function App() {
 
   const changeSort = (id) => () => {
     const newSort = {...sort};
+    // * Set all sorts, except chosen to false
     Object.entries(sort).forEach((item) => {
       const [key, value] = item;
       if (key !== id) {
@@ -38,12 +39,11 @@ function App() {
     setSort(newSort);
   }
 
-
   const { year, rating } = sort;
-  const sortedMovies = sortBy(movies.slice(), year ? ['year', 'rating'] : 'rating', year || rating);
+  const sortedMovies = sortBy(movies, year ? ['year', 'rating'] : 'rating', year || rating);
 
   return (
-    <div className="App" style={{height: '100%'}}>
+    <div className="App">
       <Header />
       <main className="content">
         <Container>
