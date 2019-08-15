@@ -1,0 +1,42 @@
+@import '../../styles/variables.scss';
+
+.main {
+  background: rgba(0, 0, 0, 0.02);
+  height: 3.125rem;
+  margin: 0.5rem 0;
+  border-radius: .5rem;
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.sortBlock {
+  border-radius: 0.75rem;
+  color: $grey2;
+  padding: 0 0.6rem;
+  margin-right: 1rem;
+  position: relative;
+  border: 0;
+
+  &:hover, &.active {
+    background-color: $grey;
+  }
+
+  &:active, &:focus {
+    outline: 0;
+  }
+
+  &.active {
+    color: black;
+  }
+
+  cursor: pointer;
+  span {
+    margin-right: .5rem;
+  }
+}
+
+.upIcon {
+    position: relative;
+    transform: translateY(10%);
+}
