@@ -1,11 +1,14 @@
-export const sortBy = (arr, field, order) => {
+import { SortItem } from './types/sort';
+import { IMovieArray } from './App';
+
+export const sortBy = (arr: any, field: [string, string] | string, order: SortItem) => {
   if (Array.isArray(field)) {
     // * If field is tuple, sort by first field then by second
     if (field.length > 2) {
       console.warn('SortBy field parameter accepts only string or tuple');
     }
 
-    return arr.slice().sort((_a, _b) => {
+    return arr.slice().sort((_a: any, _b: any) => {
       const [k, v] = field;
       const a1 = _a[k];
       const a2 = _a[v]
@@ -38,7 +41,7 @@ export const sortBy = (arr, field, order) => {
       }
     });
   } else {
-    return arr.slice().sort((_a, _b) => {
+    return arr.slice().sort((_a: any, _b: any) => {
       const a = _a[field];
       const b = _b[field];
       if (isNaN(a) || !a) return 1;
@@ -52,6 +55,6 @@ export const sortBy = (arr, field, order) => {
         if (b > a) return 1;
         return 0;
       }
-    });
+    }) as any;
   }
 }

@@ -6,7 +6,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSortDown } from '@fortawesome/free-solid-svg-icons/faSortDown';
 import { faSortUp } from '@fortawesome/free-solid-svg-icons/faSortUp';
 
-const ListOptions = ({ changeSort, sort }) => {
+import { ISort } from '../../types/sort';
+
+interface IListOptionsProps {
+  sort: ISort,
+  changeSort: (id: string) => () => void
+}
+
+const ListOptions = ({ changeSort, sort }: IListOptionsProps) => {
   const { rating, year } = sort;
 
   return (
@@ -25,14 +32,6 @@ const ListOptions = ({ changeSort, sort }) => {
       </button>
     </div>
   )
-}
-
-ListOptions.propTypes = {
-  changeSort: PropTypes.func.isRequired,
-  sort: PropTypes.shape({
-    year: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
-    rating: PropTypes.oneOfType([PropTypes.string, PropTypes.bool])
-  })
 }
 
 export default ListOptions;

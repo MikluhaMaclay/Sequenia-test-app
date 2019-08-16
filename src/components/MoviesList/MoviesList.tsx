@@ -7,16 +7,23 @@ import MovieItem from '../MovieItem/MovieItem';
 import MoviePage from '../MoviePage/MoviePage';
 import YearCard from '../YearCard/YearCard';
 
+import { IMovieArray, IMovie } from '../../App';
 
-const MoviesList = ({ movies, withYears }) => {
-    const [activeMovie, setActiveMovie] = useState(null);
+interface IMovesListProps {
+  movies: IMovieArray,
+  withYears: boolean
+}
 
-    const openModal = (movie) => () => setActiveMovie(movie);
+
+const MoviesList = ({ movies, withYears }: IMovesListProps) => {
+    const [activeMovie, setActiveMovie] = useState<IMovie | null>(null);
+
+    const openModal = (movie: IMovie) => () => setActiveMovie(movie);
     const closeModal = () => setActiveMovie(null);
 
-    const renderMovies = (movies) => {
-      let year = null;
-      return movies.map((movie) => {
+    const renderMovies = (movies: any) => {
+      let year: string | number | null = null;
+      return movies.map((movie: IMovie) => {
         if (withYears && movie.year && (movie.year !== year)) {
           year = movie.year;
           return (
@@ -29,7 +36,7 @@ const MoviesList = ({ movies, withYears }) => {
         return (
           <MovieItem key={movie.id} movie={movie} onClick={openModal(movie)} />
         )
-      })
+      }) as [JSX.Element]
     }
     
     return (
@@ -47,11 +54,6 @@ const MoviesList = ({ movies, withYears }) => {
         )}
       </div>
   )
-}
-
-MoviesList.propTypes = {
-  movies: PropTypes.array,
-  withYears: PropTypes.bool
 }
 
 export default MoviesList;
