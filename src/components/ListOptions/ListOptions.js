@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import styles from './ListOptions.module.scss';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import faSortDown from '@fortawesome/free-solid-svg-icons/faSortDown';
-import faSortUp from '@fortawesome/free-solid-svg-icons/faSortUp';
+import { faSortDown } from '@fortawesome/free-solid-svg-icons/faSortDown';
+import { faSortUp } from '@fortawesome/free-solid-svg-icons/faSortUp';
 
 const ListOptions = ({ changeSort, sort }) => {
   const { rating, year } = sort;
