@@ -1,8 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styles from './MovieItem.module.scss';
 
-const MovieItem = ({ movie, onClick }) => {
+import { IMovie } from '../../types/movies';
+
+type MovieItemProps = {
+  movie: IMovie,
+  onClick: () => void
+}
+
+const MovieItem = ({ movie, onClick }: MovieItemProps) => {
   const { localizedName, rating, name } = movie;
 
   return (
@@ -18,18 +24,6 @@ const MovieItem = ({ movie, onClick }) => {
       <span className={styles.rating}>{rating}</span>
     </div>
   )
-}
-
-MovieItem.propTypes = {
-  onClick: PropTypes.func,
-  movie: PropTypes.shape({
-    name: PropTypes.string,
-    year: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    rating: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    imageUrl: PropTypes.string,
-    localizedName: PropTypes.string,
-    description: PropTypes.string
-  }).isRequired,
 }
 
 export default MovieItem;

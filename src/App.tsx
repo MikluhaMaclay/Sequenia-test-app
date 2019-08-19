@@ -8,25 +8,9 @@ import Header from "./components/Header/Header";
 import MoviesList from "./components/MoviesList/MoviesList";
 import ListOptions from './components/ListOptions/ListOptions';
 
-import { SortItem, ISort } from './types/sort'; 
+import { ISort } from './types/sort'; 
 
-export type IMovie = {
-  id: number;
-  localizedName: string;
-  name?: string;
-  year?: string | number;
-  rating?: string | number;
-  genres?: string[];
-  imageUrl?: string ;
-}
-
-export type IMovieArray = {
-  [index: number]: IMovie
-}
-
-interface IRes {
-  films: IMovieArray
-}
+import { IRes, IMovieArray } from './types/movies';
 
 const App:FunctionComponent = () => {
   const [movies, setMovies] = useState<IMovieArray>([]);

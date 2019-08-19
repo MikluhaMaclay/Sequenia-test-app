@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from 'react'
-import PropTypes from 'prop-types'
 
-const MovieImage = ({ src, fallbackSrc, ...props }) => {
+type MovieImageProps = {
+  src?: string,
+  fallbackSrc: string,
+  alt?: string
+}
+
+const MovieImage = ({ src, fallbackSrc, alt }: MovieImageProps) => {
   const [ srcState, setSrc ] = useState('');
   const [ errored, setErrored ] = useState(false);
 
   useEffect(() => {
-    setSrc(src);
+    setSrc(src as string);
   }, [src]);
 
   // * Set src to fallback if load failed
@@ -21,15 +26,9 @@ const MovieImage = ({ src, fallbackSrc, ...props }) => {
     <img
       src={srcState || fallbackSrc}
       onError={onError}
-      {...props}
-      alt="Poster"
+      alt={alt}
     />
   )
-}
-
-MovieImage.propTypes = {
-  src: PropTypes.string,
-  fallbackSrc: PropTypes.string
 }
 
 export default MovieImage

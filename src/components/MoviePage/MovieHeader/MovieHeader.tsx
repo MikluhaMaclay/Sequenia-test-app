@@ -1,9 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './MovieHeader.module.scss';
-import { truncate } from 'lodash'
+import { truncate } from 'lodash';
 
-const MovieHeader = ({ closeModal, title }) => {
+type MovieHeaderProps = {
+  closeModal: () => void,
+  title: string
+}
+
+const MovieHeader = ({ closeModal, title }: MovieHeaderProps) => {
   const truncatedTitle = truncate(title, {
     'length': 40,
     'separator': ' '

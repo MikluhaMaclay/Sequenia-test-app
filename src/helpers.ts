@@ -1,5 +1,4 @@
 import { SortItem } from './types/sort';
-import { IMovieArray } from './App';
 
 export const sortBy = (arr: any, field: [string, string] | string, order: SortItem) => {
   if (Array.isArray(field)) {

@@ -1,12 +1,18 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import styles from './MoviePage.module.scss';
 import { Container } from 'reactstrap';
 
 import MovieHeader from './MovieHeader/MovieHeader';
 import MovieImage from '../MovieImage';
 
-const MoviePage = ({movie, closeModal}) => {
+import { IMovie } from '../../types/movies';
+
+type MoviePageProps = {
+  movie: IMovie,
+  closeModal: () => void
+}
+
+const MoviePage = ({movie, closeModal}: MoviePageProps) => {
   const {
     localizedName, name, rating, year, imageUrl, description
   } = movie;
@@ -29,18 +35,6 @@ const MoviePage = ({movie, closeModal}) => {
       </div>
     </Container>
   )
-}
-
-MoviePage.propTypes = {
-  movie: PropTypes.shape({
-    name: PropTypes.string,
-    year: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    rating: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    imageUrl: PropTypes.string,
-    localizedName: PropTypes.string,
-    description: PropTypes.string
-  }).isRequired,
-  closeModal: PropTypes.func.isRequired
 }
 
 export default MoviePage;

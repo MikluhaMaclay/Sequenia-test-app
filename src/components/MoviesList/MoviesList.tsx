@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import PropTypes from 'prop-types';
 import styles from './MoviesList.module.scss';
 import { Modal } from 'reactstrap';
 
@@ -7,7 +6,7 @@ import MovieItem from '../MovieItem/MovieItem';
 import MoviePage from '../MoviePage/MoviePage';
 import YearCard from '../YearCard/YearCard';
 
-import { IMovieArray, IMovie } from '../../App';
+import { IMovieArray, IMovie } from '../../types/movies';
 
 interface IMovesListProps {
   movies: IMovieArray,
