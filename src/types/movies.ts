@@ -10,7 +10,7 @@ export type IMovie = {
 }
 
 export type IMovieArray = {
-  [index: number]: IMovie
+  [index: number]: IMovie[]
 }
 
 export interface IRes {

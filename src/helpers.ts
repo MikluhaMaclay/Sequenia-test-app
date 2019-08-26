@@ -1,6 +1,6 @@
 import { SortItem } from './types/sort';
 
-export const sortBy = (arr: any, field: [string, string] | string, order: SortItem) => {
+export const sortBy = <T>(arr: T[], field: [string, string] | string, order: SortItem): T[] => {
   if (Array.isArray(field)) {
     // * If field is tuple, sort by first field then by second
     if (field.length > 2) {

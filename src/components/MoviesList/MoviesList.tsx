@@ -6,10 +6,10 @@ import MovieItem from '../MovieItem/MovieItem';
 import MoviePage from '../MoviePage/MoviePage';
 import YearCard from '../YearCard/YearCard';
 
-import { IMovieArray, IMovie } from '../../types/movies';
+import { IMovie } from '../../types/movies';
 
 interface IMovesListProps {
-  movies: IMovieArray,
+  movies: IMovie[],
   withYears: boolean
 }
 

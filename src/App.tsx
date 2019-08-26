@@ -10,10 +10,10 @@ import ListOptions from './components/ListOptions/ListOptions';
 
 import { ISort } from './types/sort'; 
 
-import { IRes, IMovieArray } from './types/movies';
+import { IRes, IMovie } from './types/movies';
 
 const App:FunctionComponent = () => {
-  const [movies, setMovies] = useState<IMovieArray>([]);
+  const [movies, setMovies] = useState<IMovie[]>([]);
   const [sort, setSort] = useState<ISort>({
     year: 'ASC',
     rating: false
@@ -23,7 +23,7 @@ const App:FunctionComponent = () => {
     // fetch list of movies
     fetch("https://s3-eu-west-1.amazonaws.com/sequeniatesttask/films.json")
       .then(res => res.json())
-      .then((data: IRes) => setMovies(camelcaseKeys(data.films) as IMovieArray))
+      .then((data: IRes) => setMovies(camelcaseKeys(data.films) as unknown as IMovie[]))
       .catch(e => {
         console.error(e);
       });
@@ -43,7 +43,7 @@ const App:FunctionComponent = () => {
   }
 
   const { year, rating } = sort;
-  const sortedMovies: IMovieArray = sortBy(movies, year ? ['year', 'rating'] : 'rating', year || rating);
+  const sortedMovies = sortBy(movies, year ? ['year', 'rating'] : 'rating', year || rating);
 
   return (
     <div className="App">
